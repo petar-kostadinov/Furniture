@@ -1,15 +1,19 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useGetLast } from "../../hooks/useFurniture";
 
 export default function Slider() {
-    const [furnitures, setFurnitures] = useGetLast();
-
+    const [furnitures] = useGetLast();
+    const [activeIndex, setActiveIndex] = useState(0);
+        
     return (
         <section className="slider_section">
             <div className="play_btn">
-                <a href="">
-                    <img src="public/images/play.png" alt="Play" />
-                </a>
+                {furnitures.length > 0 && (
+                    <Link to={`/catalog/furnitures/${furnitures[activeIndex]._id}/details`}>
+                        <img src="public/images/play.png" alt="Play" />
+                    </Link>
+                )}
             </div>
             <div className="number_box">
                 <div>
@@ -19,7 +23,8 @@ export default function Slider() {
                                 key={index}
                                 data-target="#carouselExampleIndicators"
                                 data-slide-to={index}
-                                className={index === 0 ? "active" : ""}
+                                className={index === activeIndex ? "active" : ""}
+                                onClick={() => setActiveIndex(index)}
                             >
                                 {String(index + 1).padStart(2, '0')}
                             </li>
@@ -31,7 +36,6 @@ export default function Slider() {
                 <div
                     id="carouselExampleIndicators"
                     className="carousel slide"
-                    data-ride="carousel"
                 >
                     <ol className="carousel-indicators">
                         {furnitures.map((_, index) => (
@@ -39,7 +43,8 @@ export default function Slider() {
                                 key={index}
                                 data-target="#carouselExampleIndicators"
                                 data-slide-to={index}
-                                className={index === 0 ? "active" : ""}
+                                className={index === activeIndex ? "active" : ""}
+                                onClick={() => setActiveIndex(index)}
                             />
                         ))}
                     </ol>
@@ -47,7 +52,7 @@ export default function Slider() {
                         {furnitures.map((furniture, index) => (
                             <div
                                 key={furniture._id}
-                                className={`carousel-item ${index === 0 ? "active" : ""}`}
+                                className={`carousel-item ${index === activeIndex ? "active" : ""}`}
                             >
                                 <div className="row">
                                     <div className="col-md-6">
@@ -58,7 +63,7 @@ export default function Slider() {
                                             </h1>
                                             <p>{furniture.description}</p>
                                             <div className="btn-box">
-                                                <Link to={`/catalog/${furniture._id}`} className="btn-1">
+                                                <Link to={`/catalog/furnitures/${furniture._id}/details`} className="btn-1">
                                                     Read More
                                                 </Link>
                                                 <Link to="/contact" className="btn-2">
@@ -69,10 +74,12 @@ export default function Slider() {
                                     </div>
                                     <div className="col-md-6 img-container">
                                         <div className="img-box">
-                                            <img
-                                                src={furniture.imageUrl || "public/images/slider-img.png"}
-                                                alt={furniture.name}
-                                            />
+                                            <Link to={`/catalog/furnitures/${furniture._id}/details`}>
+                                                <img
+                                                    src={furniture.imageUrl || "public/images/slider-img.png"}
+                                                    alt={furniture.name}
+                                                />
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>

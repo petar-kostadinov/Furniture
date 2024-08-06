@@ -12,20 +12,20 @@ export default function Edit() {
     const updateProduct = useUpdateProduct();
 
     // Fetch the furniture details and set them as the initial form values
-    
-            
-    const { 
-        values, 
-        changeHandler, 
-        submitHandler, 
+
+
+    const {
+        values,
+        changeHandler,
+        submitHandler,
         setValues,
-     } = useForm({}, async (values) => {
-        
+    } = useForm({}, async (values) => {
+
         try {
             await updateProduct(furnitureId, values);
-            navigate(`/catalog/furnitures/${furnitureId}/details`);        
-                       
-            
+            navigate(`/catalog/furnitures/${furnitureId}/details`);
+
+
         } catch (err) {
             setError(err.message);
         }
@@ -70,15 +70,19 @@ export default function Edit() {
 
                             <div className="form-group">
                                 <label htmlFor="category">Category</label>
-                                <input
-                                    type="text"
+                                <select
                                     id="category"
                                     name="category"
-                                    value={values.category || ''}
+                                    value={values.category}
                                     onChange={changeHandler}
-                                    placeholder="Enter product category"
                                     required
-                                />
+                                >
+                                    <option value="" disabled>Select category</option>
+                                    <option value="Chairs">Chairs</option>
+                                    <option value="Tables">Tables</option>
+                                    <option value="Beds">Beds</option>
+                                    <option value="Wardrobes">Wardrobes</option>
+                                </select>
                             </div>
 
                             <div className="form-group">

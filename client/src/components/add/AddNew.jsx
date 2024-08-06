@@ -67,16 +67,21 @@ export default function AddNew() {
 
                             <div className="form-group">
                                 <label htmlFor="category">Category</label>
-                                <input
-                                    type="text"
+                                <select
                                     id="category"
                                     name="category"
                                     value={values.category}
                                     onChange={changeHandler}
-                                    placeholder="Enter product category"
                                     required
-                                />
+                                >
+                                    <option value="" disabled>Select category</option>
+                                    <option value="Chairs">Chairs</option>
+                                    <option value="Tables">Tables</option>
+                                    <option value="Beds">Beds</option>
+                                    <option value="Wardrobes">Wardrobes</option>
+                                </select>
                             </div>
+
 
                             <div className="form-group">
                                 <label htmlFor="price">Price</label>
