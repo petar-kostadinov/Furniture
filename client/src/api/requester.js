@@ -2,17 +2,19 @@ async function requester(method, url, data) {
     const options = {};
 
     if (url.includes('login') || url.includes('register')) {
-        localStorage.removeItem('accessToken'); 
+        localStorage.removeItem('accessToken');
     }
 
     const accessToken = localStorage.getItem('accessToken');
-    console.log(accessToken);
     
-
     if (accessToken) {
         options.headers = {
             ...options.headers,
             'X-Authorization': accessToken,
+        }
+    } else {
+        options.headers = {
+            ...options.headers
         }
     }
 
