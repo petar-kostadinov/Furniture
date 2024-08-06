@@ -13,6 +13,7 @@ import Footer from "./components/footer/Footer"
 import { AuthContext } from "./contexts/AuthContexts"
 import AddNew from "./components/add/AddNew"
 import Edit from "./components/edit/Edit"
+import Logout from "./components/logout/Logout"
 
 
 
@@ -46,6 +47,7 @@ function App() {
           <Route path='/contact' element={<ContactBtn />} />
           <Route path='/login' element={<LoginForm />} />
           <Route path='/register' element={<RegisterForm />} />
+          <Route path='/logout' element={<Logout />} />
           <Route path='/add-new' element={<AddNew />} />
           <Route path='/catalog/furnitures/:furnitureId/details/edit' element={<Edit />} />
         </Routes>

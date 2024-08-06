@@ -6,7 +6,7 @@ export default function NavBar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isResponsive, setIsResponsive] = useState(window.innerWidth <= 992);
     const { isAuthenticated } = useContext(AuthContext)
-
+   
     useEffect(() => {
         const handleResize = () => {
             setIsResponsive(window.innerWidth <= 992);

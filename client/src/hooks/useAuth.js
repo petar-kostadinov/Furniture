@@ -6,31 +6,47 @@ import { AuthContext } from "../contexts/AuthContexts"
 
 
 export const useLogin = () => {
-        const { changeAuthState } = useContext(AuthContext);
+    const { changeAuthState } = useContext(AuthContext);
 
-        const loginHandler = async (email, password) => {
+    const loginHandler = async (email, password) => {
 
-                const {password: _,...authData} = await login(email, password)
+        const { password: _, ...authData } = await login(email, password)
 
-                changeAuthState(authData);
+        changeAuthState(authData);
 
-                return authData;
-        }
+        return authData;
+    }
 
-        return loginHandler
+    return loginHandler
 };
 
 export const useRegister = () => {
-        const { changeAuthState } = useContext(AuthContext);
+    const { changeAuthState } = useContext(AuthContext);
 
-        const registerHandler = async (email, password) => {
-                const {password: _,...authData} = await register(email, password);
+    const registerHandler = async (email, password) => {
+        const { password: _, ...authData } = await register(email, password);
 
-                changeAuthState(authData);
+        changeAuthState(authData);
 
-                return authData;
-        };
+        return authData;
+    };
 
-        return registerHandler;
+    return registerHandler;
 
 };
+
+export const useLogout = () => {
+    const { changeAuthState } = useContext(AuthContext);
+
+    const logout = () => {
+        localStorage.removeItem('accessToken');
+        changeAuthState({
+            userId: '',
+            email: '',
+            accessToken: '',
+            isAuthenticated: false,
+        });
+    };
+    return { logout }
+
+}
