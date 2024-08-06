@@ -35,7 +35,7 @@ export default function FurnitureDetails() {
       <div className="contact">
         <div className="container">
           <div className="row justify-content-center">
-            <div className="details_container" style={{ width: "700px", height: "700px", paddingBottom: 100 }}>
+            <div className="details_container" style={{ width: "700px", height: "900px", paddingBottom: 100 }}>
               <div className="img-box">
                 <img src={furniture.imageUrl} alt={furniture.name} />
               </div>
@@ -52,7 +52,7 @@ export default function FurnitureDetails() {
                     className="btn edit-btn" style={{ backgroundColor: "#24d278", border: "none", color: "#fff", padding: 5 }}>
                     Edit
                   </Link>
-                  <button onClick={handleDelete} className="btn delete-btn" style={{ backgroundColor: "#ff0000", border: "none", color: "#fff" }}>
+                  <button onClick={handleDelete} className="btn delete-btn" style={{ backgroundColor: "#ff0000", border: "none", color: "#fff", padding: 5 }}>
                     Delete
                   </button>
                 </div>

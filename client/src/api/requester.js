@@ -1,6 +1,10 @@
 async function requester(method, url, data) {
     const options = {};
 
+    if (url.includes('login') || url.includes('register')) {
+        localStorage.removeItem('accessToken'); 
+    }
+    
     const accessToken = localStorage.getItem('accessToken');
 
     if (accessToken) {
