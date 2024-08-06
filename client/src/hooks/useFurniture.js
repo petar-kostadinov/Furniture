@@ -65,3 +65,17 @@ export function useDeleteProduct() {
     return deleteProductHandler;
 }
 
+export function useGetLast() {
+    const [furnitures, setFurnitures] = useState([]);
+
+    useEffect(() => {
+        (async () => {
+            const result = await furnitureAPI.getLast();
+
+            setFurnitures(result);
+        })();
+    }, []);
+
+    return [furnitures, setFurnitures];
+}
+

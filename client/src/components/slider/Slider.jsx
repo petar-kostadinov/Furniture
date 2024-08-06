@@ -1,30 +1,29 @@
+import { Link } from "react-router-dom";
+import { useGetLast } from "../../hooks/useFurniture";
+
 export default function Slider() {
+    const [furnitures, setFurnitures] = useGetLast();
+
     return (
-        <section className="slider_section ">
+        <section className="slider_section">
             <div className="play_btn">
                 <a href="">
-                    <img src="public/images/play.png" alt="" />
+                    <img src="public/images/play.png" alt="Play" />
                 </a>
             </div>
             <div className="number_box">
                 <div>
                     <ol className="carousel-indicators indicator-2">
-                        <li
-                            data-target="#carouselExampleIndicators"
-                            data-slide-to={0}
-                            className="active"
-                        >
-                            01
-                        </li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to={1}>
-                            02
-                        </li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to={2}>
-                            03
-                        </li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to={3}>
-                            04
-                        </li>
+                        {furnitures.map((_, index) => (
+                            <li
+                                key={index}
+                                data-target="#carouselExampleIndicators"
+                                data-slide-to={index}
+                                className={index === 0 ? "active" : ""}
+                            >
+                                {String(index + 1).padStart(2, '0')}
+                            </li>
+                        ))}
                     </ol>
                 </div>
             </div>
@@ -35,132 +34,50 @@ export default function Slider() {
                     data-ride="carousel"
                 >
                     <ol className="carousel-indicators">
-                        <li
-                            data-target="#carouselExampleIndicators"
-                            data-slide-to={0}
-                            className="active"
-                        />
-                        <li data-target="#carouselExampleIndicators" data-slide-to={1} />
-                        <li data-target="#carouselExampleIndicators" data-slide-to={2} />
-                        <li data-target="#carouselExampleIndicators" data-slide-to={3} />
+                        {furnitures.map((_, index) => (
+                            <li
+                                key={index}
+                                data-target="#carouselExampleIndicators"
+                                data-slide-to={index}
+                                className={index === 0 ? "active" : ""}
+                            />
+                        ))}
                     </ol>
                     <div className="carousel-inner">
-                        <div className="carousel-item active">
-                            <div className="row">
-                                <div className="col-md-6">
-                                    <div className="detail-box">
-                                        <h1>
-                                            The Latest
-                                            <span>Furniture</span>
-                                        </h1>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                            sed do eiusmod tempor incididunt ut labore
-                                        </p>
-                                        <div className="btn-box">
-                                            <a href="" className="btn-1">
-                                                Read More
-                                            </a>
-                                            <a href="" className="btn-2">
-                                                Contact us
-                                            </a>
+                        {furnitures.map((furniture, index) => (
+                            <div
+                                key={furniture._id}
+                                className={`carousel-item ${index === 0 ? "active" : ""}`}
+                            >
+                                <div className="row">
+                                    <div className="col-md-6">
+                                        <div className="detail-box">
+                                            <h1>
+                                                {furniture.name}
+                                                <span>Furniture</span>
+                                            </h1>
+                                            <p>{furniture.description}</p>
+                                            <div className="btn-box">
+                                                <Link to={`/catalog/${furniture._id}`} className="btn-1">
+                                                    Read More
+                                                </Link>
+                                                <Link to="/contact" className="btn-2">
+                                                    Contact us
+                                                </Link>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6 img-container">
+                                        <div className="img-box">
+                                            <img
+                                                src={furniture.imageUrl || "public/images/slider-img.png"}
+                                                alt={furniture.name}
+                                            />
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col-md-6 img-container">
-                                    <div className="img-box">
-                                        <img src="public/images/slider-img.png" alt="" />
-                                    </div>
-                                </div>
                             </div>
-                        </div>
-                        <div className="carousel-item ">
-                            <div className="row">
-                                <div className="col-md-6">
-                                    <div className="detail-box">
-                                        <h1>
-                                            The Latest
-                                            <span>Furniture</span>
-                                        </h1>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                            sed do eiusmod tempor incididunt ut labore
-                                        </p>
-                                        <div className="btn-box">
-                                            <a href="" className="btn-1">
-                                                Read More
-                                            </a>
-                                            <a href="" className="btn-2">
-                                                Contact us
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-md-6 img-container">
-                                    <div className="img-box">
-                                        <img src="public/images/slider-img.png" alt="" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="carousel-item ">
-                            <div className="row">
-                                <div className="col-md-6">
-                                    <div className="detail-box">
-                                        <h1>
-                                            The Latest
-                                            <span>Furniture</span>
-                                        </h1>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                            sed do eiusmod tempor incididunt ut labore
-                                        </p>
-                                        <div className="btn-box">
-                                            <a href="" className="btn-1">
-                                                Read More
-                                            </a>
-                                            <a href="" className="btn-2">
-                                                Contact us
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-md-6 img-container">
-                                    <div className="img-box">
-                                        <img src="public/images/slider-img.png" alt="" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="carousel-item ">
-                            <div className="row">
-                                <div className="col-md-6">
-                                    <div className="detail-box">
-                                        <h1>
-                                            The Latest
-                                            <span>Furniture</span>
-                                        </h1>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                            sed do eiusmod tempor incididunt ut labore
-                                        </p>
-                                        <div className="btn-box">
-                                            <a href="" className="btn-1">
-                                                Read More
-                                            </a>
-                                            <a href="" className="btn-2">
-                                                Contact us
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-md-6 img-container">
-                                    <div className="img-box">
-                                        <img src="public/images/slider-img.png" alt="" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
             </div>

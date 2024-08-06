@@ -18,9 +18,12 @@ const update = (furnitureId, updatedData) => request.put(`${BASE_URL}/${furnitur
 
 const del = (furnitureId) => request.del(`${BASE_URL}/${furnitureId}`);
 
+const getLast = () => request.get(`${BASE_URL}?sortBy=_createdOn%20desc&pagesSize=4`);
+
 const furnitureAPI = {
     getAll,
     getOne,
+    getLast,
     create,
     update,
     del

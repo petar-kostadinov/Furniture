@@ -4,8 +4,10 @@ async function requester(method, url, data) {
     if (url.includes('login') || url.includes('register')) {
         localStorage.removeItem('accessToken'); 
     }
-    
+
     const accessToken = localStorage.getItem('accessToken');
+    console.log(accessToken);
+    
 
     if (accessToken) {
         options.headers = {
