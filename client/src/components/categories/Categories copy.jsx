@@ -1,14 +1,17 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useGetLast } from "../../hooks/useFurniture";
 
 export default function Trending() {
     const [furnitures] = useGetLast();
+    const [activeCategory, setActiveCategory] = useState('Chairs'); // Default category
 
-    const categories = ['Chairs', 'Tables', 'Beds', 'Wardrobes'];
-
+    // Filter furnitures based on the selected category
     const getFilteredFurnitures = (category) => {
         return furnitures.filter(furniture => furniture.category === category);
     };
+
+    const categories = ['Chairs', 'Tables', 'Beds', 'Wardrobes'];
 
     return (
         <section className="trending_section layout_padding">
@@ -24,11 +27,8 @@ export default function Trending() {
                                     {categories.map((category, index) => (
                                         <div
                                             key={index}
-                                            className="t-link-box collapsed"
-                                            data-toggle="collapse"
-                                            data-target={`#collapse${index}`}
-                                            aria-expanded="false"
-                                            aria-controls={`collapse${index}`}
+                                            className={`t-link-box ${activeCategory === category ? '' : 'collapsed'}`}
+                                            onClick={() => setActiveCategory(category)}
                                         >
                                             <div className="number">
                                                 <h5>{`0${index + 1}`}</h5>
@@ -46,9 +46,7 @@ export default function Trending() {
                             {categories.map((category, index) => (
                                 <div
                                     key={index}
-                                    id={`collapse${index}`}
-                                    className="collapse"
-                                    data-parent="#accordion"
+                                    className={`collapse ${activeCategory === category ? 'show' : ''}`}
                                 >
                                     <div className="img_container">
                                         {getFilteredFurnitures(category).length > 0 ? (

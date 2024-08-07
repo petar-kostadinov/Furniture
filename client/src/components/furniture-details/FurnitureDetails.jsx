@@ -49,10 +49,28 @@ export default function FurnitureDetails() {
               {isAuthenticated && isCreator && (
                 <div className="action_buttons" key={furniture._id}>
                   <Link to={`/catalog/furnitures/${furniture._id}/details/edit`}
-                    className="btn edit-btn" style={{ backgroundColor: "#24d278", border: "none", color: "#fff", padding: 5 }}>
+                    className="btn edit-btn" style={{
+                      backgroundColor: "#24d278",
+                      border: "none",
+                      color: "#fff",
+                      padding: "5px",
+                      borderRadius: "20px",
+                      width: "100px",
+                      margin: "0 10px",
+                      textAlign: "center"
+                    }}>
                     Edit
                   </Link>
-                  <button onClick={handleDelete} className="btn delete-btn" style={{ backgroundColor: "#ff0000", border: "none", color: "#fff", padding: 5 }}>
+                  <button onClick={handleDelete} className="btn delete-btn" style={{
+                    backgroundColor: "#252525",
+                    border: "none",
+                    color: "#fff",
+                    padding: "5px",
+                    borderRadius: "20px",
+                    width: "100px",
+                    margin: "0 10px",
+                    textAlign: "center"
+                  }}>
                     Delete
                   </button>
                 </div>
