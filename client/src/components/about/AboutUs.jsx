@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function AboutUs() {
     return (
         <section className="about_section layout_padding">
@@ -13,7 +15,7 @@ export default function AboutUs() {
                                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
                                 enim ad minim veniam
                             </p>
-                            <a href="">Read More</a>
+                            <Link to="https://videnov.bg/page/za-nas">Read More</Link>
                         </div>
                     </div>
                     <div className="col-md-6">

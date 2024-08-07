@@ -68,7 +68,6 @@ export default function Slider() {
                                                     <br />
                                                     <span>Furniture</span>
                                                 </h1>
-                                                <p>{furniture.description}</p>
                                                 <div className="btn-box">
                                                     <Link to={`/catalog/furnitures/${furniture._id}/details`} className="btn-1">
                                                         Read More
@@ -84,7 +83,6 @@ export default function Slider() {
                                                 <Link to={`/catalog/furnitures/${furniture._id}/details`}>
                                                     <img
                                                         src={furniture.imageUrl || "images/slider-img.png"}
-                                                        alt={furniture.name}
                                                     />
                                                 </Link>
                                             </div>
@@ -97,7 +95,7 @@ export default function Slider() {
                                 <div className="row">
                                     <div className="col-md-6">
                                         <div className="detail-box">
-                                            <h1>Last 
+                                            <h1>Last
                                                 Added
                                                 <br />
                                                 <span>Furniture</span>
